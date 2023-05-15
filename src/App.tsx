@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, TableHTMLAttributes, useRef, useState } from 'react';
+import { DetailedHTMLProps, TableHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { Configuration, OpenAIApi } from 'openai';
 import ReactMarkdown from 'react-markdown';
 import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
@@ -21,6 +21,12 @@ function App() {
   const [storedValues, setStoredValues] = useState<[IPrompt] | []>([]);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // 👇️ scroll to bottom every time messages change
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [isSubmitting]);
 
   function getFormControl(
     form: HTMLFormElement,
@@ -100,6 +106,16 @@ function App() {
             );
           })
         )}
+        {isSubmitting && (
+          <div
+            className="h-8 w-8 mx-auto my-4 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-warning motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status">
+            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+              Loading...
+            </span>
+          </div>
+        )}
+        <div ref={bottomRef} />
       </div>
       <div className="absolute w-full left-0 bottom-5">
         <form onSubmit={handleSendMessage} ref={formRef} className="relative">
