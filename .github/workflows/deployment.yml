@@ -14,14 +14,14 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: 'npm'
-          cache-dependency-path: package-lock.json
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
       - name: Install dependencies
-        run: npm install
+        run: yarn install
       # - name: Run tests
       # - run: npm test
-      - name: Build file
-        run: npm run build
+      - name: Build application
+        run: yarn build
 
   # deploy the application to netlify
   deploy:
