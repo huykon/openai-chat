@@ -4,8 +4,6 @@ import ReactMarkdown from 'react-markdown';
 import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
 import remarkGfm from 'remark-gfm';
 
-const OPENAI_API_KEY = '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';
-
 interface IPrompt {
   question: string;
   answer?: string;
@@ -13,7 +11,7 @@ interface IPrompt {
 
 function App() {
   const configuration = new Configuration({
-    apiKey: OPENAI_API_KEY
+    apiKey: import.meta.env.VITE_OPENAI_API_KEY
   });
 
   const openai = new OpenAIApi(configuration);
