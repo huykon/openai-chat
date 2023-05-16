@@ -2,6 +2,8 @@
 
 A conversational AI app inspired by OpenAI's GPT-3 language model, built with Vite.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/45ed8455-dd3f-47a9-aaf8-04717be45ecb/deploy-status)](https://app.netlify.com/sites/openai-chat-mason/deploys)
+
 ## Features
 
 - Natural language processing and understanding

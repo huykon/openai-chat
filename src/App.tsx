@@ -74,7 +74,7 @@ function App() {
 
   return (
     <div className="relative container mx-auto h-screen pt-5">
-      <h1 className="text-center text-2xl">ChatGPT</h1>
+      <h1 className="text-center text-2xl">Ask me any question</h1>
       <div className="group w-full text-white border-b border-gray-900/50 bg-gray-800 py-5 mt-2 overflow-y-auto max-h-[calc(100vh-147px)]">
         {storedValues.length < 1 ? (
           <p className="px-2">
